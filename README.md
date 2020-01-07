@@ -2,10 +2,10 @@
 
 The purpose of this repository is my self practice of Logistic Regression. I am a student that is learning, let me know if you find any errors,the code is inspired from examples and exercises found in books and other sources (links below)
 
-<img src="img/img1.png" alt="logo" width="200" heigth="280"/>
-<img src="img/img2.png" alt="logo" width="200" heigth="280"/>
-<img src="img/img3.png" alt="logo" width="200" heigth="280"/>
-<img src="img/img4.png" alt="logo" width="200" heigth="280"/>
+<img src="img/img1.png" alt="logo" width="800" heigth="700"/>
+<img src="img/img2.png" alt="logo" width="800" heigth="700"/>
+<img src="img/img3.png" alt="logo" width="800" heigth="700"/>
+<img src="img/img4.png" alt="logo" width="800" heigth="700"/>
 
 
 ## Resources that I used to learn about this fun topic:
