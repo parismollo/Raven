@@ -8,3 +8,5 @@ The purpose of this repository is my self practice of Logistic Regression. I am 
 * https://www.youtube.com/watch?v=JDU3AzH3WKg&t=807s
 * https://ml-cheatsheet.readthedocs.io/en/latest/logistic_regression.html
 * https://towardsdatascience.com/logistic-regression-detailed-overview-46c4da4303bc
+*  Maximum likelihood https://www.youtube.com/watch?v=XepXtl9YKwc
+* Coefficient https://www.youtube.com/watch?v=vN5cNN2-HWE
