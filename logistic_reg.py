@@ -52,4 +52,46 @@ with st.echo():
         y = logistic(x)
         return y * (1 - y)
 
-st.markdown('**_We’ll use gradient descent to maximize the likelihood directly. This means we need to calculate the likelihood function and its gradient._**')
+st.markdown('_Here is the **log likelihood** that we will "maximize with" **Gradient Descent**_')
+st.latex(r''' \log L(\beta|x_i, y_i) =  y_i\log f(x_i \beta) + (1 - y_i) \log(1-f(x_i \beta))''')
+'Because the Gradient Descent minimizes things we will work with the negative log likelihood and minimize it.'
+
+# Create a few resources to create the function
+Vector = List[float]
+
+
+def dot(v: Vector, w: Vector) -> float:
+    assert len(v) == len(w), 'must have the same size'
+    return sum(v_i * w_i for v_i, w_i in zip(v, w))
+assert dot([1, 2, 3], [4, 5, 6]) == 32
+
+def vector_sum(vectors: List[Vector]) -> Vector:
+    assert vectors, "no vectors provided!"
+    num_elements = len(vectors[0])
+    assert all(len(v) == num_elements for v in vectors), "different sizes!"
+
+    return [sum(vector[i] for vector in vectors)
+            for i in range(num_elements)]
+
+st.subheader("Let's code")
+with st.echo():
+    def _negative_log_likelihood(x: Vector, y: float, beta: Vector) -> float:
+        if y ==1:
+            return -math.log(logistic(dot(x, beta)))
+        else:
+            return -math.log(1 - logistic(dot(x, beta)))
+st.write('We will now sum all the log likelihood')
+with st.echo():
+    def negative_log_likelihood(xs: List[Vector], ys: List[Vector], beta: Vector) -> float:
+        return sum(_negative_log_likelihood(x, y, beta) for x, y in zip(xs, ys))
+
+    def _negative_log_partial_j(x: Vector, y: float, beta: Vector, j: int) -> float:
+        return -(y - logistic(dot(x, beta))) * x[j]
+
+    def _negative_log_gradient(x: Vector, y: float, beta: Vector) -> Vector:
+        return [_negative_log_partial_j(x, y, beta, j)
+                for j in range(len(beta))]
+
+    def negative_log_gradient(xs: List[Vector], ys: List[float], beta: Vector) -> Vector:
+        return vector_sum([_negative_log_gradient(x, y, beta)
+                           for x, y in zip(xs, ys)])
