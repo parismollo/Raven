@@ -6,9 +6,10 @@ The purpose of this repository is my self practice of Logistic Regression. I am 
 I will be using Streamlit to develop an App where I will be sharing what I've learned. To run the app install streamlit and run the following command:
 
 
-`pip install streamlit`
-
-`streamlit run https://raw.githubusercontent.com/parismollo/LogisticRegression/master/logistic_regression.py`
+```
+pip install streamlit
+streamlit run https://raw.githubusercontent.com/parismollo/LogisticRegression/master/logistic_regression.py
+```
 
 ## Resources that I used to learn about this fun topic:
 * Tutorial Python Engineer :https://www.youtube.com/watch?v=JDU3AzH3WKg
