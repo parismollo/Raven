@@ -1,5 +1,5 @@
 # Logistic Regression
-## Working with the Sklearn Breast Cancer data-set
+## Working with the Sklearn Breast Cancer dataset
 
 The purpose of this repository is my self practice of Logistic Regression. I am a student that is learning, let me know if you find any errors,the code is inspired from examples and exercises found in books, tutorials and other sources all mentioned in this file.
 
