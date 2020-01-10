@@ -83,5 +83,5 @@ model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 st.write("Accuracy: ", accuracy(y_test, predictions))
 
-st.write('Prediction 1 :', predictions[0])
-st.write('Actual result 1:', y_test[0])
+st.write('Prediction nº 1 :', predictions[0])
+st.write('Actual result nº 1:', y_test[0])
