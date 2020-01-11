@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn import datasets
+import pandas as pd
 
 st.title('Logistic Regression')
 
@@ -9,7 +10,7 @@ st.subheader('Understanding Logistic Regression :books:')
 st.write('Logistic regression is an algorithm used to classify observations to a discrete number of classes, 1 and 0, for example.')
 
 st.subheader('The Idea :bulb:')
-st.write('The goal is to predict whether the cancer is **benign** or **malignant** based on 10 real-valued features computed for each **cell nucleus**. To map predicted values to probabilities, we use the **sigmoid function**. The function maps any real value into another value between 0 (benign) and 1 (malignant).')
+st.write('The goal is to predict whether the cancer is **benign** or **malignant** based on 10 real-valued features computed for each **cell nucleus**. To map predicted values to probabilities, we use the **sigmoid function**. The function maps any real value into another value between 0 (malignant)  and 1 (benign).')
 
 st.subheader('The process')
 st.write('To be able to predict it, we will use a linear regression like this one: ')
@@ -75,12 +76,21 @@ class LogisticRegression:
         return 1 / (1 + np.exp(-x))
 
 st.subheader('Sklearn Breast Cancer Dataset - Model application')
-
+st.write('Features are computed from a digitized image of a fine needle aspirate (FNA) of a breast mass. **They describe characteristics of the cell nucleus present in the image**')
 data_load_state = st.text('Loading data...')
 data = datasets.load_breast_cancer()
 data_load_state.text('Loading data... Done!')
 
 X, y = data.data, data.target
+
+features = data.feature_names
+some_data = X[:21]
+some_label = y[:21]
+
+df = pd.DataFrame(some_data, columns=features)
+df['diagnosis'] = some_label
+
+st.write(df)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1234)
 
@@ -98,5 +108,16 @@ model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 st.write("Accuracy: ", accuracy(y_test, predictions))
 
-st.write('Prediction nº 1 :', predictions[0])
-st.write('Actual result nº 1:', y_test[0])
+list_of_predictions = predictions[5:15]
+list_of_actual_results = y_test[5:15]
+print(list_of_predictions)
+print(list_of_actual_results)
+s1 = pd.Series(list_of_predictions)
+s2 = pd.Series(list_of_actual_results)
+
+labels = ['Predicted diagnosis']
+df1 = pd.DataFrame(s1, columns=labels)
+df1['Expected diagnosis'] = s2
+
+st.write(df1)
+st.write('**Description**:  0 - malignant; 1 - benign ')
