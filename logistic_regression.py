@@ -22,11 +22,11 @@ st.subheader('Linear Vs Logistic')
 st.write('Linear regression predictions **are continuous**, they will be used to predict  the score of a student, or the heigth of a person. In the other hand, Logistic regression predictions are discrete, they will assign a probability score related to some **discrete classification**, such as, pass or fail the exam.')
 
 st.subheader('Optimizing our results :dart:')
-st.write(''' Now to find the best predictions we need to find the values of our parameters, the weights, and bias, which **will minimize the errors of our predictions**. To measure the errors of our predictions we need a **cost function**, in linear regression, we use the sum of squared errors and then we apply the gradient descent technique to look for the best set of parameters that will give us the smallest error. However, in this scenario, the SSR cost function doesn't work.  So we will use the **cross-entropy cost** function and apply the gradient descent.
+st.write(''' Now to find the best predictions we need to find the values of our parameters, the weights, and bias, which **will minimize the errors of our predictions**. To measure the errors of our predictions we need a **Loss function**, in linear regression, we use the sum of squared errors and then we apply the gradient descent technique to look for the best set of parameters that will give us the smallest error. However, in this scenario, the SSR loss function doesn't work.  So we will use the **cross-entropy loss** function and apply the gradient descent.
 
-We want to optimize the cost function with respect to our parameters, weight, and bias.
+We want to optimize the loss function with respect to our parameters, weight, and bias.
 
-We will start somewhere, compute the derivative, update the parameters, **move towards the direction until we find the cost minimum**''')
+We will start somewhere, compute the derivative, update the parameters, **move towards the direction until we find the minimum loss/error **''')
 
 class LogisticRegression:
     def __init__(self, learning_rate=0.001, number_of_iterations=1000):
@@ -54,7 +54,7 @@ class LogisticRegression:
             linear_model = np.dot(X, self.weights) + self.bias
             predicted_y = self._sigmoid(linear_model)
 
-            # to update the weights and bias we need to compute the derivative of the cost function
+            # to update the weights and bias we need to compute the derivative of the loss function
             dw = (1 / n_samples) * np.dot(X.T, (predicted_y - y)) # Check why is transposed
             db = (1 / n_samples) * np.sum(predicted_y - y)
 
