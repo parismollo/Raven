@@ -7,8 +7,8 @@ I will be using Streamlit to develop an App where I will be sharing what I've le
 
 
 ```
-pip install streamlit
-streamlit run https://raw.githubusercontent.com/parismollo/LogisticRegression/master/logistic_regression.py
+pip install -r requirements.txt
+streamlit run https://raw.githubusercontent.com/parismollo/Breast-cancer-classification/master/logistic_regression.py
 ```
 ![demo](gif/gif02.gif)
 
